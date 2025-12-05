@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ecourts-chatbot
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt && playwright install chromium
+    startCommand: cd backend && uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: HEADLESS_MODE
+        value: true

@@ -1,0 +1,14 @@
+run = "pip install -r requirements.txt && playwright install chromium && cd backend && python app.py"
+language = "python3"
+
+[env]
+HEADLESS_MODE = "true"
+BACKEND_HOST = "0.0.0.0"
+BACKEND_PORT = "8000"
+
+[nix]
+channel = "stable-23_11"
+
+[deployment]
+run = ["sh", "-c", "cd backend && python app.py"]
+deploymentTarget = "cloudrun"
